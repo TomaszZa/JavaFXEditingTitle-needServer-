@@ -1,49 +1,56 @@
 package com.capgemini.starterkit.javafx.dataprovider.data;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * Person data.
  *
  * @author Leszek
  */
-public class BookVO {
+public class BookVO implements Serializable {
 
-	private String name;
-	private AuthorVO author;
-	private Long Id;
+	private Long id;
+	private String title;
+	private List<AuthorVO> authors;
 
-	public BookVO(Long Id, String name, AuthorVO author) {
-		this.name = name;
-		this.author = author;
-		this.Id = Id;
+	public BookVO() {
+
 	}
 
-	public Long getID() {
-		return Id;
+	public BookVO(Long Id, String name, List<AuthorVO> author) {
+		this.title = name;
+		this.authors = author;
+		this.id = Id;
 	}
 
-	public void setID(Long Id) {
-		this.Id = Id;
+	public Long getId() {
+		return id;
 	}
 
-	public String getName() {
-		return name;
+	public void setId(Long Id) {
+		this.id = Id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getTitle() {
+		return title;
 	}
 
-	public AuthorVO getAuthor() {
-		return author;
+	public void setTitle(String name) {
+		this.title = name;
 	}
 
-	public void setAuthor(AuthorVO author) {
-		this.author = author;
+	public List<AuthorVO> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<AuthorVO> author) {
+		this.authors = author;
 	}
 
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", birthDate=" + author + "]";
+		return "Person [name=" + title + ", birthDate=" + authors + "]";
 	}
 
 }

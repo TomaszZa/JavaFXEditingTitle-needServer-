@@ -149,7 +149,7 @@ public class PersonSearchController {
 		 * Define what properties of PersonVO will be displayed in different
 		 * columns.
 		 */
-		bookColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getName()));
+		bookColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getTitle()));
 		// tylko
 		// zakladaja
 		// jak
@@ -161,14 +161,15 @@ public class PersonSearchController {
 		// wyswietlania dzieki bindowi reltatow serch buttona z modelu z
 		// rezultTable czyli tabela w okienku
 
-		authorColumn.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(
-				cellData.getValue().getAuthor().getFirstName() + " " + cellData.getValue().getAuthor().getLastName()));
+		authorColumn.setCellValueFactory(
+				cellData -> new ReadOnlyStringWrapper(cellData.getValue().getAuthors().get(0).getFirstName() + " "
+						+ cellData.getValue().getAuthors().get(0).getLastName()));
 		// dla kolumny wywolywana jest metoda .setCellValueFactory()
 		// ktora tworzy wiersze kolumny,za pomoca wyrazenia lambda
 		// zaimplementowanay jest w neij obikt
 		// read-only(ReadOnlyStringWrapper) do ktorego przekazujemy dane
 		// do kolumny
-		idColumn.setCellValueFactory(callData -> new ReadOnlyStringWrapper(callData.getValue().getID().toString()));
+		idColumn.setCellValueFactory(callData -> new ReadOnlyStringWrapper(callData.getValue().getId().toString()));
 
 		////////////////// EDIT
 		// Define the button cell
@@ -238,7 +239,7 @@ public class PersonSearchController {
 
 					@Override
 					protected Void call() throws Exception {
-						speaker.say(newValue.getName());
+						speaker.say(newValue.getTitle());
 						return null;
 					}
 				};

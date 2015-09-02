@@ -31,7 +31,7 @@ public class DataProviderImpl implements DataProvider {
 
 	public DataProviderImpl() {
 		List<BookVO> bookVo = null;
-		String jsons = connection.getJSON("http://localhost:9000/rest/books/books-by-title", 10000);
+		String jsons = connection.getJSON("http://localhost:9721/workshop/rest/books/books-by-title", 10000);
 		System.out.println(jsons);
 		ObjectMapper mapper = new ObjectMapper();
 
